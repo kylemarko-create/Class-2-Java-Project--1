@@ -1,8 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-public class UI extends JFrame implements ActionListener {
+public class UITwo extends JFrame implements ActionListener {
 
     private BankAccount account;
     private JTextField amountField;
@@ -13,7 +15,7 @@ public class UI extends JFrame implements ActionListener {
     private JButton summaryButton;
 
     // window builder
-    public UI() {
+    public UITwo() {
         // Non UI defaults chosen
         account = new BankAccount();
         account.setFirstName("User");
@@ -31,7 +33,7 @@ public class UI extends JFrame implements ActionListener {
                     "Name: " + account.getFirstName() + " " + account.getLastName() + "\n" +
                     "Account ID: " + account.getAccountID() + "\n" +
                     "Balance: $" + String.format("%.2f", account.getBalance());
-                JOptionPane.showMessageDialog(UI.this, summary, "Account Summary", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(UITwo.this, summary, "Account Summary", JOptionPane.INFORMATION_MESSAGE);
                 System.exit(0);
             }
         });
@@ -42,7 +44,9 @@ public class UI extends JFrame implements ActionListener {
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         // Display balance
-        balanceLabel = new JLabel("Balance: $0.00", SwingConstants.CENTER);
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
+        balanceLabel = new JLabel("Date:" + now.format(formatter), SwingConstants.CENTER);
 
         // Message label
         messageLabel = new JLabel(" ", SwingConstants.CENTER);
@@ -120,6 +124,6 @@ public class UI extends JFrame implements ActionListener {
 
     // Main method launch UI
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new UI());
+        SwingUtilities.invokeLater(() -> new UITwo());
     }
 }
