@@ -24,15 +24,28 @@ public class BankAccount {
         }
     }
 
+    // // old withdraw function
+    // public void withdrawal(double amount) {
+    //     if (amount > 0) {
+    //         balance -= amount;
+    //         System.out.printf("Withdrew: $" + amount + "   ");
+    //     } else {
+    //         System.out.println("Withdrawal amount cannot be double negative.");
+    //     }
+    // }
+
     // withdraw
     public void withdrawal(double amount) {
-        if (amount > 0) {
+        if (amount <= 0) {
+            System.out.println("No negative Withdraws!");
+        } else if (amount > balance) {
+            System.out.println("Insufficient funds. Cannot withdraw this much.");
+        } else {
             balance -= amount;
             System.out.printf("Withdrew: $" + amount + "   ");
-        } else {
-            System.out.println("Withdrawal amount cannot be double negative.");
         }
     }
+
 
     // setters and getters
     public void setFirstName(String firstName) {
