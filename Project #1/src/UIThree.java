@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Random;
+
 
 // Assignment #3
 public class UIThree extends JFrame implements ActionListener {
@@ -16,6 +18,8 @@ public class UIThree extends JFrame implements ActionListener {
 
     private JLabel dateLabel;
     private JPanel mainPanel;
+    //new text feild:
+    private JTextField textField;
 
     public UIThree() {
         setTitle("Assignment 3");
@@ -41,6 +45,11 @@ public class UIThree extends JFrame implements ActionListener {
         mainPanel.add(button2log);
         mainPanel.add(button3green);
         mainPanel.add(button4exit);
+        //adding text feild stuff:
+        textField = new JTextField();
+        textField.setEditable(false);
+        mainPanel.add(textField);
+
 
         add(mainPanel);
         setVisible(true);
@@ -52,7 +61,8 @@ public class UIThree extends JFrame implements ActionListener {
             LocalDateTime now = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
             //dateLabel = new JLabel("Date:" + now.format(formatter), SwingConstants.CENTER);
-            JOptionPane.showMessageDialog(this, "Date: " + now.format(formatter));
+            //JOptionPane.showMessageDialog(this, "Date: " + now.format(formatter));
+            textField.setText("Date: " + now.format(formatter));
         } else if (e.getSource() == button2log) {
             try {
                 FileWriter writer = new FileWriter("log.txt", false);
@@ -64,7 +74,13 @@ public class UIThree extends JFrame implements ActionListener {
                 ex.printStackTrace();
             }
         } else if (e.getSource() == button3green) {
-            mainPanel.setBackground(Color.decode("#006400"));
+            //mainPanel.setBackground(Color.decode("#006400"));
+            //New color logic:
+            Random rand = new Random();
+            int greenValue = rand.nextInt(256);
+            Color randomGreen = new Color(0, greenValue, 0);
+            mainPanel.setBackground(randomGreen);
+            textField.setText("Green hue: (0, " + greenValue + ", 0)");
 
         } else if (e.getSource() == button4exit) {
             System.exit(0);
