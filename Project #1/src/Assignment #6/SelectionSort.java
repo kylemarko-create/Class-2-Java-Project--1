@@ -1,6 +1,6 @@
 import java.util.*;
 
-// Comparator class
+// Selection Sort method used by both Roll No and Student ID comparator classes.
 public class SelectionSort {
 
     public static void sort(ArrayList<Student> list, Comparator<Student> comparator) {
