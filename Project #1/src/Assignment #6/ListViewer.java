@@ -10,8 +10,8 @@ class ListViewer {
         // My example students:
         studentList.add(new Student("Alice", 535, "123 Milton St"));
         // format is name, id, address
-        studentList.add(new Student("Hunter", 243, "789 Pine Rd"));
-        studentList.add(new Student("Tammy", 843, "456 Oak Ave"));
+        studentList.add(new Student("#1 Hunter", 23, "789 Pine Rd"));
+        studentList.add(new Student(":) Tammy", 843, "456 Oak Ave"));
         studentList.add(new Student("Miku", 341, "321 Elm St"));
         studentList.add(new Student("Eve", 44343, "654 Mullberry Dr"));
         studentList.add(new Student("Jacklin", 130, "987 Nighmare St"));
